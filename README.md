@@ -1,3 +1,3 @@
-# Scalable DNN Architecture for Indoor localization
+## ML in Indoor Positioning
 
-#### Final Target: SAE + Hierarchical multi-label classification / DNN classifier chain
+
