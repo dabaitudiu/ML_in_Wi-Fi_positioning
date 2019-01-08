@@ -1,34 +1,38 @@
 import xlrd 
 import numpy as np 
 
-fpath = "MNIST_data/test/train.xlsx"
+fpath = "MNIST_data/test/train_3000.xlsx"
+
 
 def one_hot_conversion(a,b,c):
-    m = [0] * 3
-    n = [0] * 5
-    q = [0] * 110
-    m[int(float(a)-1)] = 1
-    n[int(float(b)-1)] = 1
-    q[int(float(c)-1)] = 1
+    m = np.zeros(3)
+    n = np.zeros(5)
+    q = np.zeros(110)
+    m[int(float(a))] = 1
+    n[int(float(b))] = 1
+    q[int(float(c))] = 1
     tmp = np.append(m,n)
     tmp = np.append(tmp,q)
     return tmp
 
-# training data
-x = []
-# lables
-y_ = []
-# dictionary: {building_floor:position}
-pos = {}
 
-def read_datasets(filepath):
+
+def read_datasets():
+    filepath = fpath
     xl_book = xlrd.open_workbook(filepath)
     xl_table = xl_book.sheets()[0] 
+    xl_length = xl_table.nrows
     rows = [np.array(xl_table.row_values(i)) for i in range(1,xl_table.nrows)]
-    
-    for i in range (len(rows)):
-        row = rows[i]
 
+    # training data
+    x = []
+    # lables
+    y_ = []
+    # dictionary: {building_floor:position}
+    pos = {}
+
+    for i in range (1,xl_length):
+        row = np.array(xl_table.row_values(i))
         # modification on row[524] to make it range from 0 to 110 rather random number.
         myKey = str(row[523]) + "-" + str(row[522])
         if myKey not in pos.keys():
@@ -38,15 +42,18 @@ def read_datasets(filepath):
         row[524] = pos[myKey].index(row[524])
 
         # append training data and lables
-        x.append(row[:520])
+        x.append((row[:520].astype(np.float64)+110)/80)
         y_.append(one_hot_conversion(row[523],row[522],row[524]))
+
+    x = np.array(x)
+    y_ = np.array(y_)
     return x, y_
 
-def next_batch(num):
+def next_batch(num,x,y_):
     idx = np.arange(0, len(x))
     np.random.shuffle(idx)
     idx = idx[:num]
     data_shuffle = [x[i] for i in idx]
-    labels_shuffle = [labels [i] for i in idx]
+    labels_shuffle = [y_[i] for i in idx]
 
     return np.asarray(data_shuffle), np.asarray(labels_shuffle)
