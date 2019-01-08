@@ -25,7 +25,7 @@ building accuracy:  99.73248620632002 %
 building + floor prediction accuracy:  86.94198294599565 %
 building + floor + place accuracy:  36.81658585520816 %
 
---------------------------------------------------------------
+# --------------------------------------------------------------
 With AE:
 Test accuracy: 0.9888630269303647
 For  5981  test data:
