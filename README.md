@@ -33,6 +33,82 @@ building accuracy:  99.08042133422505 %
 building + floor prediction accuracy:  85.45393746865072 %
 building + floor + place accuracy:  30.245778297943488 %
 ```
+**2019-Jan-9**: 
+1. correct prediction calucaltions, which were written wrongly.
+```python
+b = 0
+b_f = 0
+b_f_p = 0
+
+for i in range(1,len(x_val)):
+    sub1 = np.argmax(predictions[-i][:3])
+    sub2 = np.argmax(predictions[-i][3:8])
+    sub3 = np.argmax(predictions[-i][8:118])
+
+    sub4 = np.argmax(y_val[-i][:3])
+    sub5 = np.argmax(y_val[-i][3:8])
+    sub6 = np.argmax(y_val[-i][8:118])
+
+    if (sub1 == sub4) and (sub2 == sub5) and (sub3 == sub6):
+        b_f_p += 1
+        b_f += 1
+        b += 1
+    else:
+        if (sub1 == sub4) and (sub2 == sub5):
+            b_f += 1
+            b += 1
+        else:
+            if (sub1 == sub4):
+                b += 1
+```
+2. with shuffle on input data, level 2 reaches 99% accuracy. Meanwhile, separate multiclass training (manual group buildings) does not show significant enhancement on prediction accuracy. [Model: 520-256-128-64-32-16-5] , dropout=0.2This perhaps because building + floor prediction has already been very high. Its effect on Point prediction has not been tested, which will be tested later. 
+```python
+
+idx = np.arange(1, xl_length)
+np.random.shuffle(idx)
+
+for i in idx:
+    row = np.array(xl_table.row_values(i))
+...
+
+model = keras.Sequential()
+model.add(keras.layers.Dense(256, activation='relu', input_shape=(520,)))
+model.add(keras.layers.Dropout(0.2))
+...
+model.add(keras.layers.Dense(5, activation='softmax'))
+
+model.compile(optimizer='rmsprop',
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
+history = model.fit(x_train, y_train, epochs=11,batch_size=512,validation_data=(x_val,y_val))
+        
+# ------------------------------------------------------------
+
+For  5981  test data:
+building accuracy:  99.83280387895 %
+building + floor prediction accuracy:  99.31449590369503 %
+building + floor + place accuracy:  58.68583848854706 %
+
+# ------------------------------------------------------------
+
+Separate multiclass classification: 
+Floor prediction accuracy at Building 0: 99.03846153846153%
+Floor prediction accuracy at Building 1: 98.84615384615384%
+Floor prediction accuracy at Building 2: 99.57894736842105%
+```
+3. file: data_statistics.py is created, in which we can find the signal input distributions. There are too much 0s after regularization, which means that this is a sparse input. By far, I have little idea about handling sparse input, whether to use sparse autoencoder or other methods will be fulfilled in the following days.
+
+```python
+[1.0007061e+07 4.9434000e+04 1.4171300e+05 8.5343000e+04 4.7117000e+04
+ 2.2588000e+04 9.8640000e+03 1.7560000e+03 6.6000000e+01 4.8700000e+02
+ 1.1400000e+02 1.3700000e+02]
+ ```
+
+4. As the building+floor prediction has been very positive, the only problem left is to enhance the accuracy prediction on **Point**. Besides Neural Networks, there are also traditional ways to handle this classification problem. For example, Random Forest. These will also be tested in the following days. 
+
+
+
 2. AE - denoised
 3. AE - stacked
 4. AE - CNN
