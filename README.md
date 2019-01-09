@@ -107,14 +107,15 @@ Floor prediction accuracy at Building 2: 99.57894736842105%
 
 4. As the building+floor prediction has been very positive, the only problem left is to enhance the accuracy prediction on **Point**. Besides Neural Networks, there are also traditional ways to handle this classification problem. For example, Random Forest. These will also be tested in the following days. 
 
+**2019-Jan-10**: 
+1. manual_floor.py Updated. With which can testify multiclass classification with hierarchical structures that are formed manually. First thinking is to adjust epochs and other parameters according to the validation graph. 
 
 
+
+### Stage 5 
 2. AE - denoised
 3. AE - stacked
 4. AE - CNN
-
-### Stage 5 
-
 5. CNN
 6. AE + CNN
 7. AE_CNN + CNN
