@@ -110,6 +110,8 @@ Floor prediction accuracy at Building 2: 99.57894736842105%
 **2019-Jan-10**: 
 1. manual_floor.py Updated. With which can testify multiclass classification with hierarchical structures that are formed manually. First thinking is to adjust epochs and other parameters according to the validation graph. 
 
+**2019-Jan-11**:
+modify rssi_dnn_keras.py. Rectify errors, optimize codes, correctly split data into train, val, test sets.
 
 
 ### Stage 5 
