@@ -144,6 +144,18 @@ For  1111  test data:
 building accuracy:  98.37983798379838 %
 building + floor prediction accuracy:  70.83708370837084 %
 ```
+Uploaded Optimized_Manual_Buildings.py, Manual_Buildings_with_CNN.py
+```python
+For 536 test data:
+floor accuracy:  94.21641791044776 %
+
+For 307 test data:
+floor accuracy:  82.41042345276873 %
+
+For 268 test data:
+floor accuracy:  92.91044776119404 %
+```
+No significant improvements happened. 
 
 
 ### Stage 5 
