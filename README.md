@@ -113,6 +113,38 @@ Floor prediction accuracy at Building 2: 99.57894736842105%
 **2019-Jan-11**:
 modify rssi_dnn_keras.py. Rectify errors, optimize codes, correctly split data into train, val, test sets.
 
+**2019-Jan-12**:
+modify rssi_data.py, read_test_data.py, created toImageTest.py, CNN.py
+Implemented CNN, whereas the accuracy is not high.
+```python
+Layer (type)                 Output Shape              Param #
+=================================================================
+conv2d_1 (Conv2D)            (None, 21, 21, 32)        320
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 10, 10, 32)        0
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 8, 8, 64)          18496
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 4, 4, 64)          0
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 2, 2, 64)          36928
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 256)               0
+_________________________________________________________________
+dense_1 (Dense)              (None, 256)               65792
+_________________________________________________________________
+dense_2 (Dense)              (None, 118)               30326
+=================================================================
+Total params: 151,862
+Trainable params: 151,862
+Non-trainable params: 0
+_________________________________________________________________
+
+For  1111  test data:
+building accuracy:  98.37983798379838 %
+building + floor prediction accuracy:  70.83708370837084 %
+```
+
 
 ### Stage 5 
 2. AE - denoised
