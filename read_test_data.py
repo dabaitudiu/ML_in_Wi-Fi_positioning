@@ -1,8 +1,7 @@
 import xlrd 
 import numpy as np 
 
-
-fpath = "MNIST_data/test/datav2.xlsx"
+fpath = "MNIST_data/test/validationData2.xlsx"
 
 
 def one_hot_conversion(a,b,c):
@@ -50,7 +49,6 @@ def read_datasets():
         y_.append(one_hot_conversion(row[523],row[522],row[524]))
 
     x = np.array(x)
-    print(x.shape)
     y_ = np.array(y_)
     return x, y_
 
@@ -119,17 +117,13 @@ def cnn_read():
 
         # append training data and lables
         sub_x = (row[:520].astype(np.float64)+110)/110
-        # print("sub_x previous shape: ", sub_x.shape)
         ax = [np.zeros(9)]
         sub_x = np.append(sub_x, ax)
-        # print("sub_x medium shape: ", sub_x.shape)
         sub_x = sub_x.reshape(23,23,1)
-        # print("sub_x modified shape: ", sub_x.shape)
         x.append(sub_x)
         y_.append(one_hot_conversion(row[523],row[522],row[524]))
 
     x = np.array(x)
-    print(x.shape)
     y_ = np.array(y_)
     
     return x, y_
