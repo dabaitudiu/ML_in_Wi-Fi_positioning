@@ -174,7 +174,18 @@ created count_points_at_floors.py. Recount the points at different floors, which
 2-1  :  60
 2-4  :  65
 ```
-tensorflow-gpu终于work了。。安装问题及总结归在**bug_collection**repo了。
+tensorflow-gpu终于work了。。安装问题及总结归在**bug_collection** repo了。
+
+**2019-Jan-15**:
+连续鼓捣6个多小时终于连file带gpu配置给弄完了。。
+created **VGG16_test.py**. But just ran 10 epochs due to the speed limit of my GPU.
+```python
+For  1111  test data:
+building accuracy:  98.28982898289829 %
+building + floor prediction accuracy:  87.3987398739874 %
+building + floor + place accuracy:  1.3501350135013501 %
+```
+Tomorrow will test (1) 20 epochs (2) self-trained weights 
 
 ### Stage 5 
 2. AE - denoised
