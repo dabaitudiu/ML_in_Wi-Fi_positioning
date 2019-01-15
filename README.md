@@ -157,6 +157,23 @@ floor accuracy:  92.91044776119404 %
 ```
 No significant improvements happened. 
 
+**2019-Jan-15**:
+created count_points_at_floors.py. Recount the points at different floors, which proves that the number of labels is not equal to 110.
+```python
+2-3  :  91
+2-0  :  44
+1-1  :  38
+1-3  :  30
+0-2  :  68
+2-2  :  57
+0-3  :  68
+0-1  :  66
+1-2  :  45
+0-0  :  54
+1-0  :  49
+2-1  :  60
+2-4  :  65
+```
 
 ### Stage 5 
 2. AE - denoised
