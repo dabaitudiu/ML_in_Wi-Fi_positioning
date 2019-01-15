@@ -174,6 +174,7 @@ created count_points_at_floors.py. Recount the points at different floors, which
 2-1  :  60
 2-4  :  65
 ```
+tensorflow-gpu终于work了。。安装问题及总结归在**bug_collection**repo了。
 
 ### Stage 5 
 2. AE - denoised
