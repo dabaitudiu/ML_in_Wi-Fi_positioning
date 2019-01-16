@@ -7,12 +7,10 @@ KNN + Gradient Descent
 Feed Forward, single layer
 
 #### Stage 3
-keras 256_128_118, dropout = 0.2, multi-label(,118), epoch = 20, loss = binary_cross_entropy
-```python
-building accuracy:  100.0 %
-building + floor prediction accuracy:  87.82608695652173 %
-building + floor + place accuracy:  43.55555555555556 %
-```
+- 256_128_118
+- multi-label
+- [keras_multi_label.py](https://github.com/dabaitudiu/FYP/blob/master/keras_mul_label.py)
+- [mul_use_two_files.py](https://github.com/dabaitudiu/FYP/blob/master/mul_use_two_file.py)
 
 #### Stage 4
 Autoencoder:
@@ -35,32 +33,7 @@ building + floor + place accuracy:  30.245778297943488 %
 ```
 **2019-Jan-9**: 
 1. correct prediction calucaltions, which were written wrongly.
-```python
-b = 0
-b_f = 0
-b_f_p = 0
 
-for i in range(1,len(x_val)):
-    sub1 = np.argmax(predictions[-i][:3])
-    sub2 = np.argmax(predictions[-i][3:8])
-    sub3 = np.argmax(predictions[-i][8:118])
-
-    sub4 = np.argmax(y_val[-i][:3])
-    sub5 = np.argmax(y_val[-i][3:8])
-    sub6 = np.argmax(y_val[-i][8:118])
-
-    if (sub1 == sub4) and (sub2 == sub5) and (sub3 == sub6):
-        b_f_p += 1
-        b_f += 1
-        b += 1
-    else:
-        if (sub1 == sub4) and (sub2 == sub5):
-            b_f += 1
-            b += 1
-        else:
-            if (sub1 == sub4):
-                b += 1
-```
 2. with shuffle on input data, level 2 reaches 99% accuracy. Meanwhile, separate multiclass training (manual group buildings) does not show significant enhancement on prediction accuracy. [Model: 520-256-128-64-32-16-5] , dropout=0.2This perhaps because building + floor prediction has already been very high. Its effect on Point prediction has not been tested, which will be tested later. 
 ```python
 
@@ -189,7 +162,7 @@ building + floor + place accuracy:  1.3501350135013501 %
 - 20，30 epochs都试了，VGG16 with pretrained_weights最好记录是87%， None weights最好记录89%
 - 不知道Jang & Hong的paper是怎么到的95%的accuracy的，感觉有点玄幻。这个问题真的不适合CNN。强行转CNN还行？
 - 之前为了满足VGG16最小输入条件32_32，直接拼接了两次数组，今天用了PIL库的resize函数试了一下，效果特别差。 70%多
-- Created [Multi-Head.py])(https://github.com/dabaitudiu/FYP/blob/master/Multi_Head.py). 效果很好，能达到91%。
+- Created [Multi-Head.py](https://github.com/dabaitudiu/FYP/blob/master/Multi_Head.py). 效果很好，能达到91%。
 - Optimized Reading function. Used pandas instead of xlrd, speed increases significantly.
 
 **2019-Jan-17**:
