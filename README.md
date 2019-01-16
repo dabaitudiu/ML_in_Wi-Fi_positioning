@@ -176,7 +176,7 @@ created count_points_at_floors.py. Recount the points at different floors, which
 ```
 tensorflow-gpu终于work了。。安装问题及总结归在**bug_collection** repo了。
 
-**2019-Jan-15**:
+**2019-Jan-16**:
 连续鼓捣6个多小时终于连file带gpu配置给弄完了。。
 created **VGG16_test.py**. But just ran 10 epochs due to the speed limit of my GPU.
 ```python
@@ -185,7 +185,17 @@ building accuracy:  98.28982898289829 %
 building + floor prediction accuracy:  87.3987398739874 %
 building + floor + place accuracy:  1.3501350135013501 %
 ```
-Tomorrow will test (1) 20 epochs (2) self-trained weights 
+- 成功在cloud上跑程序。 2080Ti诚不我欺。推荐[极客云](http://www.jikecloud.net/register.html?iid=nxjgaUz3gadPt2hzEBR8ig==).
+- 20，30 epochs都试了，VGG16 with pretrained_weights最好记录是87%， None weights最好记录89%
+- 不知道Jang & Hong的paper是怎么到的95%的accuracy的，感觉有点玄幻。这个问题真的不适合CNN。强行转CNN还行？
+- 之前为了满足VGG16最小输入条件32_32，直接拼接了两次数组，今天用了PIL库的resize函数试了一下，效果特别差。 70%多
+- Created Multi-Head.py. 效果很好，能达到91%。
+- Optimized Reading function. Used pandas instead of xlrd, speed increases significantly.
+
+**2019-Jan-17**:
+**发现重要问题**： Kim的paper中Referenced Points的分类根本就不对！他按Building-Floor-Referenced_Points组成label, Building和Floor没什么问题，但是！不同的Building和Floor组合可能有相同的Referenced_Points值！比如2楼4层106号点位：2_4_106, 也可能有3楼3层106号点位: 3_3_106, 但是这两个106不是一个东西！此外，我之前的处理方法更有问题，我是按key=building_floor对点位进行了分组，但是label还是用的max(len(点位)), 这肯定就错了，因为label的值代表的根本就不是一个东西。怪不得accuracy这么低
+
+
 
 ### Stage 5 
 2. AE - denoised
