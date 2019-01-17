@@ -170,6 +170,11 @@ building + floor + place accuracy:  1.3501350135013501 %
 - Kim的paper中Referenced Points的分类根本就不对！他按Building-Floor-Referenced_Points组成label, Building和Floor没什么问题，但是！不同的Building和Floor组合可能有相同的Referenced_Points值！比如2楼4层106号点位：2_4_106, 也可能有3楼3层106号点位: 3_3_106, 但是这两个106不是一个东西！此外，我之前的处理方法更有问题，我是按key=building_floor对点位进行了分组，但是label还是用的max(len(点位)), 这肯定就错了，因为label的值代表的根本就不是一个东西。怪不得accuracy这么低。
 - 删掉label重写了一遍CNN:[CNN_BF.py](https://github.com/dabaitudiu/FYP/blob/master/CNN_BF.py)， 果然accuracy提高到91%以上。
 
+**2019-Jan-18**:
+[CNN based Indoor Localization using RSS Time-Series](https://www.researchgate.net/publication/325678644_CNN_based_Indoor_Localization_using_RSS_Time-Series)
+今天读完这篇paper我觉得我可以放弃继续fyp了。Building,Floor predication全100%， 把我发现之前paper的问题都给总结了， 我是真滴佛了。。。
+这个paper也采用了我一直认为该用的分层训练，细化到点之后，每个点大概20多个samples，做成矩阵放进CNN。。。双100%，，，我是真滴佛了。。
+Created Group_BF.py. 其实没什么。。但我这脑力大概是我写过最绕的程序了。。
 
 
 ### Stage 5 
