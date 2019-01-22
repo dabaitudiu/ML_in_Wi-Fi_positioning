@@ -176,6 +176,11 @@ building + floor + place accuracy:  1.3501350135013501 %
 这个paper也采用了我一直认为该用的分层训练，细化到点之后，每个点大概20多个samples，做成矩阵放进CNN。。。双100%，，，我是真滴佛了。。
 Created Group_BF.py. 其实没什么。。但我这脑力大概是我写过最绕的程序了。。
 
+**2019-Jan-19 - 2019-Jan-22**:
+- 测试了一下decision trees 和 random forest 的效果，decision trees 结果大概为[80%,80%,70%], random forest 大概能多了5%。
+- data preprocessing: 去掉方差很小的data (0.9*0.1) features剩余409，B1的概率能提升到89%
+- update extract_B1_F1.py, 83%的准确率确实需要额外分析。同学推荐的KL-divergence。
+
 
 ### Stage 5 
 2. AE - denoised
