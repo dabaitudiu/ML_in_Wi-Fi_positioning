@@ -2,25 +2,25 @@
 
 #### Stage 1-3： Simple classification trials
 KNN + Gradient Descent, (256, 128, 128) NN, 多标签分类
-- [keras_multi_label.py](https://github.com/dabaitudiu/FYP/blob/master/keras_mul_label.py)
-- [mul_use_two_files.py](https://github.com/dabaitudiu/FYP/blob/master/mul_use_two_file.py)
+- [keras_multi_label.py](https://github.com/dabaitudiu/FYP/blob/master/Stage1_3/keras_mul_label.py)
+- [mul_use_two_files.py](https://github.com/dabaitudiu/FYP/blob/master/Stage4/mul_use_two_file.py)
 
 #### Stage 4： Autoencoder for reduce dimensions
-- AE - 256
-- AE - 256-128-64-128-256
+- [AE - 256](https://github.com/dabaitudiu/FYP/blob/master/Stage4/AE_single.py)
+- [AE - 256-128-64-128-256](https://github.com/dabaitudiu/FYP/blob/master/Stage4/AE_64to118.py)
 
-#### Stage 5：CNN, VGG16, InceptionV3, Random Forest, XGBoost.
+#### Stage 5：CNN, VGG16, InceptionV3, Multi-Head, Random Forest, XGBoost.
 **2019-Jan-9**: 
 - correct prediction calucaltions, which were written wrongly.
 
-- with shuffle on input data, level 2 reaches 99% accuracy. Meanwhile, separate multiclass training (manual group buildings) does not show significant enhancement on prediction accuracy. [Model: 520-256-128-64-32-16-5] , dropout=0.2This perhaps because building + floor prediction has already been very high. Its effect on Point prediction has not been tested, which will be tested later. 
+- with [shuffle](https://github.com/dabaitudiu/FYP/blob/master/Stage4/breakthrough_shuffle.py) on input data, predictions accuracies increased significantly. Meanwhile, separate multiclass training (manual group buildings) does not show significant enhancement on prediction accuracy. [Model: 520-256-128-64-32-16-5].This perhaps because building + floor prediction has already been very high. Its effect on Point prediction has not been tested, which will be tested later. 
 
-- file: data_statistics.py is created, in which we can find the signal input distributions. There are too much 0s after regularization, which means that this is a sparse input. By far, I have little idea about handling sparse input, whether to use sparse autoencoder or other methods will be fulfilled in the following days.
+- file: [data_statistics.py](https://github.com/dabaitudiu/FYP/blob/master/data_statistics) is created, in which we can find the signal input distributions. There are too much 0s after regularization, which means that this is a sparse input. By far, I have little idea about handling sparse input, whether to use sparse autoencoder or other methods will be fulfilled in the following days.
 
 - As the building+floor prediction has been very positive, the only problem left is to enhance the accuracy prediction on **Point**. Besides Neural Networks, there are also traditional ways to handle this classification problem. For example, Random Forest. These will also be tested in the following days. 
 
 **2019-Jan-10**: 
-- manual_floor.py Updated. With which can testify multiclass classification with hierarchical structures that are formed manually. First thinking is to adjust epochs and other parameters according to the validation graph. 
+- [manual_floor.py](https://github.com/dabaitudiu/FYP/blob/master/Stage4/manual_floor.py) Updated. With which can testify multiclass classification with hierarchical structures that are formed manually. First thinking is to adjust epochs and other parameters according to the validation graph. 
 
 **2019-Jan-11**:
 - modify rssi_dnn_keras.py. Rectify errors, optimize codes, correctly split data into train, val, test sets.
@@ -31,7 +31,7 @@ KNN + Gradient Descent, (256, 128, 128) NN, 多标签分类
 - Uploaded Optimized_Manual_Buildings.py, Manual_Buildings_with_CNN.py
 
 **2019-Jan-15**:
-- created count_points_at_floors.py. Recount the points at different floors, which proves that the number of labels is not equal to 110.
+- created [count_points_at_floors.py](https://github.com/dabaitudiu/FYP/blob/master/count_points_at_floors.py). Recount the points at different floors, which proves that the number of labels is not equal to 110.
 - tensorflow-gpu终于work了。。安装问题及总结归在**bug_collection** repo了。
 
 **2019-Jan-16**:
@@ -55,6 +55,7 @@ KNN + Gradient Descent, (256, 128, 128) NN, 多标签分类
 - Created Group_BF.py. 其实没什么。。但我这脑力大概是我写过最绕的程序了。。
 
 **2019-Jan-19 - 2019-Jan-22**:
+- 集合并优化之前所有代码，删除之前错误和冗余代码，创建[Optimized_Manual_Buildings_2.py](https://github.com/dabaitudiu/FYP/blob/master/Optimized_Manual_Buildings_2.py)
 - 测试了一下decision trees 和 random forest 的效果，decision trees 结果大概为[80%,80%,70%], random forest 大概能多了5%。
 - data preprocessing: 去掉方差很小的data (0.9*0.1) features剩余409，B1的概率能提升到89%
 - update extract_B1_F1.py, 83%的准确率确实需要额外分析。同学推荐的KL-divergence。
