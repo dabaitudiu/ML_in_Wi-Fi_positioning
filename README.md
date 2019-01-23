@@ -66,4 +66,5 @@ KNN + Gradient Descent, (256, 128, 128) NN, 多标签分类
 - Created[model_ensemble_1.py](https://github.com/dabaitudiu/FYP/blob/master/model_ensemble_1.py）试了一下模型融合，NN和XGB各有错误，共同错误仅仅有一个。咨询了一下同学，建议添加更多模型，尽管准确率低。之后用模型做regression或voting。
 - 重新验证了一下Kim_s.py这个文件，一直好奇他是怎么实现floor92%以上的准确率的，毕竟有一个是83%. 数据处理的太不一样，实在是搞不下去，后来对自己的结果做了一下加权，发现也在92%以上，所以估计他这个模型还算靠谱。不过他瞎标label是肯定错了。
 - LightGBM还没测试，估计之后几天也就是模型融合了。
+- Uploaded [Random_Forest_test.py](https://github.com/dabaitudiu/FYP/blob/master/Random_Forest_test.py) 上传随机森林test，准备调参voting.
 
