@@ -181,6 +181,9 @@ Created Group_BF.py. 其实没什么。。但我这脑力大概是我写过最�
 - data preprocessing: 去掉方差很小的data (0.9*0.1) features剩余409，B1的概率能提升到89%
 - update extract_B1_F1.py, 83%的准确率确实需要额外分析。同学推荐的KL-divergence。
 
+**2019-Jan-23**:
+- Created [Hyperopt_test.py](https://github.com/dabaitudiu/FYP/blob/master/Hyperopt_test.py)用了一下Hyperopt调参，不过没什么improvement.
+
 
 ### Stage 5 
 2. AE - denoised
