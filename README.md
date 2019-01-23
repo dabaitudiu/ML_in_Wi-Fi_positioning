@@ -63,7 +63,7 @@ KNN + Gradient Descent, (256, 128, 128) NN, 多标签分类
 **2019-Jan-23**:
 - Created [Hyperopt_test.py](https://github.com/dabaitudiu/FYP/blob/master/Hyperopt_test.py)用了一下Hyperopt调参，不过没什么improvement.
 - Created [xgboost_test.py](https://github.com/dabaitudiu/FYP/blob/master/xgboost_test.py)天池之前有一个室内定位的比赛，看了几个总结贴，大部分都用了xgboost, 我也试了一下。感觉确实还可以， Building 0 96%, Building 2 93%，不过Building 1仍然只有77%左右，调参也很慢，用sci-kit的grid-search根本卡到不能运行。
-- Created[model_ensemble_1.py](https://github.com/dabaitudiu/FYP/blob/master/model_ensemble_1.py）试了一下模型融合，NN和XGB各有错误，共同错误仅仅有一个。咨询了一下同学，建议添加更多模型，尽管准确率低。之后用模型做regression或voting。
+- Created[model_ensemble_1.py](https://github.com/dabaitudiu/FYP/blob/master/model_ensemble_1.py) 试了一下模型融合，NN和XGB各有错误，共同错误仅仅有一个。咨询了一下同学，建议添加更多模型，尽管准确率低。之后用模型做regression或voting。
 - 重新验证了一下Kim_s.py这个文件，一直好奇他是怎么实现floor92%以上的准确率的，毕竟有一个是83%. 数据处理的太不一样，实在是搞不下去，后来对自己的结果做了一下加权，发现也在92%以上，所以估计他这个模型还算靠谱。不过他瞎标label是肯定错了。
 - LightGBM还没测试，估计之后几天也就是模型融合了。
 - Uploaded [Random_Forest_test.py](https://github.com/dabaitudiu/FYP/blob/master/Random_Forest_test.py) 上传随机森林test，准备调参voting.
