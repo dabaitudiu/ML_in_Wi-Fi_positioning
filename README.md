@@ -183,7 +183,7 @@ Created Group_BF.py. 其实没什么。。但我这脑力大概是我写过最�
 
 **2019-Jan-23**:
 - Created [Hyperopt_test.py](https://github.com/dabaitudiu/FYP/blob/master/Hyperopt_test.py)用了一下Hyperopt调参，不过没什么improvement.
-
+- Created [xgboost_test.py](https://github.com/dabaitudiu/FYP/blob/master/xgboost_test.py)天池之前有一个室内定位的比赛，看了几个总结贴，大部分都用了xgboost, 我也试了一下。感觉确实还可以， Building 0 96%, Building 2 93%， 不过Building 1仍然只有77%左右，调参也很慢，用sci-kit的grid-search根本卡到不能运行。
 
 ### Stage 5 
 2. AE - denoised
