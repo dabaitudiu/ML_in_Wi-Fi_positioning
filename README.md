@@ -68,3 +68,17 @@ KNN + Gradient Descent, (256, 128, 128) NN, 多标签分类
 - LightGBM还没测试，估计之后几天也就是模型融合了。
 - Uploaded [Random_Forest_test.py](https://github.com/dabaitudiu/FYP/blob/master/Random_Forest_test.py) 上传随机森林test，准备调参voting.
 
+**2019-Jan-26**:
+- Created [feature_selection.py](https://github.com/dabaitudiu/FYP/blob/master/feature_selection.py)
+- 用了一下sklearn的特征提取，200feautre有用，之后random forest在Building 0 稳定97%以上准确率。不过后来也试了一下KNN, N=10时候竟然也到了97%
+- 重新看了一遍CNN那个paper，觉得非常有问题。下面是问prof的原文：
+- Ambiguous test data:
+  They first claimed they will use the 1111 testing records, but in the later sections of the paper, they redefined the testing set again by generating it from the 20% of the training set. This is really worth considering, because if I do the same thing as him (rather than using the 1111 test data), I can also reach 100% accuracy.
+
+- One-sided assertion:
+  As they say, they only select building #2 for testing, just because it will be the same for the other buildings intuitively. This is really not rigorous. Even if their algorithm really achieves higher accuracy, they did not test them on Building #1 (where I get 80% accuracy).
+
+- Data format issue for testing
+   In their work, they captured 10 consistent readings from a place and put the 10_520 input to a CNN model. It is fine with the training set, however, for the test data (which only has very few samples), it’s hard to form 10 consistent readings following their specifications. In other words, for testing data, I can only find some 3_520, or 7_520 matrix, rather than their 10 * 520 readings. This also supports my suspect that their test data is generated from the train data.
+
+- In conclusion, I think this paper is really not very rigorous, or maybe I understand wrongly. Secondly, after feature selection, I think with current classification methods, ensemble models like random forests and gradient boosting has already reached the bottleneck for the prediction accuracy, there should be some problems with the test set for Building #1. Finally, if I split the train set to train and test set, I can also reach 100% prediction accuracy already. 
