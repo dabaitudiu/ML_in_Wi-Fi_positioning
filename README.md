@@ -84,3 +84,13 @@ KNN + Gradient Descent, (256, 128, 128) NN, 多标签分类
 - 之前想到一个思路是同时算classification和regression， 如果差距太大就是错误，要重算
 - 对于Building1特别不准，昨天看了一个NLP比赛的总结，对于这种情况可以用boosting，不过啥是boosting，具体能不能用还得之后再看。
 - Regression写完了 [data_trim.py](https://github.com/dabaitudiu/FYP/blob/master/data_trim.py), 结果惨不忍睹，根本没有参考价值...
+```python
+-----------------------------------------------------------------
+Total Average error:  12.094245732001768
+-----------------------------------------------------------------
+A ( < 50) number  1072
+A Average error:  9.90055803326563
+-----------------------------------------------------------------
+B ( < 100) number  1105
+Average error:  11.528668641755623
+```
