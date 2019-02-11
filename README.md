@@ -78,3 +78,8 @@ KNN + Gradient Descent, (256, 128, 128) NN, 多标签分类
 - 能想到的现有model都测试了一遍，陷入迷茫，在思考有没有什么新的方向。决定先算一下自己目前meter级的准确度.
 - created [Meters_test.py](https://github.com/dabaitudiu/FYP/blob/master/Meters_test.py) 本来想在一个文件内解决，脑子不够用，总搞混，先把坐标信息提取到一个csv里了。
 
+**2019-Feb-11**:
+- Meters_test.py, Point_Prediction.py 和 final_data.csv是年前搞的，主要就是把point label和经纬度match一下
+- 好久没做fyp了。。再不做估计就凉了。今天整合了一下所有的code，算了一下point的meters error，12.5m，哭了。等会可能要trim一下再看看。
+- 之前想到一个思路是同时算classification和regression， 如果差距太大就是错误，要重算
+- 对于Building1特别不准，昨天看了一个NLP比赛的总结，对于这种情况可以用boosting，不过啥是boosting，具体能不能用还得之后再看。
