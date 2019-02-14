@@ -94,3 +94,7 @@ A Average error:  9.90055803326563
 B ( < 100) number  1105
 Average error:  11.528668641755623
 ```
+
+**2019-Feb-14**:
+- 终于做了一下模型融合[Model_Assembling.py](https://github.com/dabaitudiu/FYP/blob/master/Model_Assembling.py)，然而效果并不好
+![img]((https://github.com/dabaitudiu/FYP/blob/master/meters_estimation.png)
