@@ -85,16 +85,18 @@ KNN + Gradient Descent, (256, 128, 128) NN, 多标签分类
 - 对于Building1特别不准，昨天看了一个NLP比赛的总结，对于这种情况可以用boosting，不过啥是boosting，具体能不能用还得之后再看。
 - Regression写完了 [data_trim.py](https://github.com/dabaitudiu/FYP/blob/master/data_trim.py), 结果惨不忍睹，根本没有参考价值...
 ```python
------------------------------------------------------------------
+
 Total Average error:  12.094245732001768
------------------------------------------------------------------
+
 A ( < 50) number  1072
 A Average error:  9.90055803326563
------------------------------------------------------------------
+
 B ( < 100) number  1105
 Average error:  11.528668641755623
 ```
 
 **2019-Feb-14**:
 - 终于做了一下模型融合[Model_Assembling.py](https://github.com/dabaitudiu/FYP/blob/master/Model_Assembling.py)，然而效果并不好
-![img]((https://github.com/dabaitudiu/FYP/blob/master/meters_estimation.png)
+- Error Distribution:
+<img src="https://github.com/dabaitudiu/FYP/blob/master/meters_distribution.png" width = "300" height = "200" alt="fig1" align="middle"/>
+
